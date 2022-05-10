@@ -37,13 +37,7 @@ public class HomeController {
                             jwtRequest.getPassword()
                     )
             );
-            final UserDetails userDetails = userService.loadUserByUsername(jwtRequest.getUsername());
-            final String token = jwtUtility.generateToken(userDetails);
-            System.out.println("You see to token in the postman: "+ token.length() + " Bytes");
-            System.out.println("The credentials, userName: "+ jwtRequest.getUsername() +", password: "+ jwtRequest.getPassword());
-
         } catch (BadCredentialsException e) {
-            System.out.println("Your push bad credentials in the login");
             throw new Exception("Push bad credentials, please enter your credentials", e);
 
         }
